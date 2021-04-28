@@ -1,8 +1,7 @@
 package br.com.ericpinto.user.controller;
 
 import br.com.ericpinto.user.dto.UserDTO;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -45,4 +44,33 @@ public class UserController {
     public List<UserDTO> getUsuarios(){
         return usuarios;
     }
+
+    @GetMapping("/users/{cpf}")
+    public	UserDTO	getUsersFiltro(@PathVariable String cpf){
+        for (UserDTO userDTO: usuarios){
+            if(userDTO.getCpf().equals(cpf)){
+                return userDTO;
+            }
+        }
+        return null;
+    }
+
+    @PostMapping("/users/newUser")
+    UserDTO inserir(@RequestBody UserDTO userDTO){
+        userDTO.setDataCadastro(new Date());
+        usuarios.add(userDTO);
+        return userDTO;
+    }
+
+    @DeleteMapping("users/{cpf}")
+    public boolean remover(@PathVariable String cpf){
+        for (UserDTO userDTO: usuarios){
+            if(userDTO.getCpf().equals(cpf)){
+                usuarios.remove(userDTO);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
