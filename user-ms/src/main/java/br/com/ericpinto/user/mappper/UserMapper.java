@@ -5,7 +5,7 @@ import br.com.ericpinto.user.model.User;
 
 public class UserMapper {
 
-    public static User mapToDTO(UserDTO userDTO){
+    public static User mapToUser(UserDTO userDTO){
         return User.builder()
                 .name(userDTO.getName())
                 .address(userDTO.getAddress())
@@ -16,7 +16,7 @@ public class UserMapper {
                 .build();
     }
 
-    public static UserDTO mapToUser(User user){
+    public static UserDTO mapToDTO(User user){
         return UserDTO.builder()
                 .name(user.getName())
                 .address(user.getAddress())
