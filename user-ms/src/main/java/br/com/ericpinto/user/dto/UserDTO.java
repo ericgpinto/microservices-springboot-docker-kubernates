@@ -1,16 +1,18 @@
 package br.com.ericpinto.user.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
+@Builder
 public class UserDTO {
 
-    private String nome;
-    private String cpf;
-    private String endereco;
+    private String name;
+    private String legalDocumentNumber;
+    private String address;
     private String email;
-    private String telefone;
-    private Date dataCadastro;
+    private String cellPhone;
+    private Date registrationDate;
 }
