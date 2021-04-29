@@ -7,6 +7,8 @@ import br.com.ericpinto.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,6 +33,7 @@ public class UserService {
     }
 
     public UserDTO save(UserDTO userDTO){
+        userDTO.setRegistrationDate(new Date());
         User user = userRepository.save(UserMapper.mapToUser(userDTO));
         return UserMapper.mapToDTO(user);
     }
