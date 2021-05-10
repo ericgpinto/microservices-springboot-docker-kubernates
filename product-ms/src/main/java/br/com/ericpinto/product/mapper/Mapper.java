@@ -1,7 +1,9 @@
-package br.com.ericpinto.product.model;
+package br.com.ericpinto.product.mapper;
 
 import br.com.ericpinto.product.dto.CategoryDTO;
 import br.com.ericpinto.product.dto.ProductDTO;
+import br.com.ericpinto.product.model.Category;
+import br.com.ericpinto.product.model.Product;
 
 public class Mapper {
 

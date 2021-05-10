@@ -1,16 +1,13 @@
 package br.com.ericpinto.product.service;
 
 import br.com.ericpinto.product.dto.ProductDTO;
-import br.com.ericpinto.product.model.Mapper;
+import br.com.ericpinto.product.mapper.Mapper;
 import br.com.ericpinto.product.model.Product;
 import br.com.ericpinto.product.repository.ProductRepository;
 import lombok.AllArgsConstructor;
-import org.hibernate.ObjectDeletedException;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,8 +33,9 @@ public class ProductService {
         return null;
     }
 
-    public List<ProductDTO> getProductByCategoryId(Long categoryId){
-        var products = productRepository.getProductByCategory(categoryId);
+    public List<ProductDTO> getProductByCategoryId(Long categoryId) {
+        List<Product> products =
+                productRepository.getProductByCategory(categoryId);
         return products
                 .stream()
                 .map(Mapper::mapToProductDTO)

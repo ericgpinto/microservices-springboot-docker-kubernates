@@ -22,7 +22,6 @@ public class Product {
     private Float amount;
     private String description;
     private String productIdentifier;
-
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
